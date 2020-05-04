@@ -1,5 +1,6 @@
 package com.company;
 
+import java.lang.invoke.LambdaConversionException;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
@@ -51,6 +52,63 @@ public class RepresentationOfTime {
         return d;
     }
     public void freeTimeInEightyYears(){
+
         
+    }
+    public static void totalHoursBetweenAgeOf18_80(){
+        int workingDaysPerWeek = 5;
+        int weekendDays = 2;
+        int hoursPerDay = 24;
+        int weekDays = 7;
+        int numberOfWeeksInYear = 52;
+
+
+        LocalDate myDateOfBirth = LocalDate.of(1989, Month.JUNE, 15);
+        LocalDate schoolAge = myDateOfBirth.plusYears(7);
+        LocalDate eighteenYears = myDateOfBirth.plusYears(18);
+        LocalDate ageOfSixtyFive = myDateOfBirth.plusYears(65);
+        LocalDate ageOfEighty = myDateOfBirth.plusYears(80);
+        //weeks
+        long numberOfActiveWeeks = ChronoUnit.WEEKS.between(schoolAge, ageOfSixtyFive);
+        //days
+        long numberOfDaysIn80Years = ChronoUnit.DAYS.between(myDateOfBirth, ageOfEighty);
+        long semiActiveDays = ChronoUnit.DAYS.between(myDateOfBirth, schoolAge);
+        long activeDays = ChronoUnit.DAYS.between(schoolAge, ageOfSixtyFive);
+        long inactiveDays = ChronoUnit.DAYS.between(ageOfSixtyFive, ageOfEighty);
+
+        long weekendDaysForActiveTime = weekendDays * numberOfActiveWeeks;
+        long weekendHoursForActiveTime = hoursPerDay * weekendDaysForActiveTime;
+
+        long numberOfActiveDays = workingDaysPerWeek * numberOfActiveWeeks;
+        long totalHoursForActiveTime = hoursPerDay * numberOfActiveDays;
+
+        long totalHoursOfLifetime = hoursPerDay * numberOfDaysIn80Years;
+        long totalSleepingHoursInLife = 8 * numberOfDaysIn80Years;
+        long totalWorkingHours = 8 * numberOfActiveDays;
+        long totalRestHours = 1 * numberOfActiveDays;
+        long timeOnWc = (long) (0.02 * (24 * activeDays));
+        long totalHygienHours = (long) (0.30 * activeDays);
+        long totalHousekeepingHours =  activeDays;
+        long eatingTime = (long) (0.30 * activeDays);
+        long timeOnPhone = 3 * (activeDays + inactiveDays);
+        long totalHoursActiveTime = totalWorkingHours + totalRestHours + timeOnWc +totalHygienHours+
+                totalHousekeepingHours + eatingTime + timeOnPhone;
+        long totalHoursInActiveTime = 24 * activeDays;
+        long freeTimeActivePeriod = totalHoursInActiveTime - (totalHoursActiveTime);
+
+        long totalInactiveHours = 24 * inactiveDays;
+        long timeOnWcInactiveTime = (long) (0.04 * (24 * inactiveDays));
+        long hygienHoursInactiveTime = 1 * inactiveDays;
+        long housekeepingHoursInactiveTime = 2 * inactiveDays;
+        long eatingHoursInactiveTime = 1 * inactiveDays;
+
+        long freeTimeInactivePeriod = totalInactiveHours - (timeOnWcInactiveTime + hygienHoursInactiveTime
+                                + housekeepingHoursInactiveTime+ eatingHoursInactiveTime + totalSleepingHoursInLife);
+
+        long freeTimeInLifetime = freeTimeActivePeriod + freeTimeInactivePeriod +(24 * semiActiveDays);
+        System.out.println(totalHoursOfLifetime / freeTimeInLifetime+"% of my life is free time ");
+        System.out.println("Between the age of 18 - 80 i have " + freeTimeInLifetime + " h of free time");
+        long freeTimePercentage;
+
     }
 }

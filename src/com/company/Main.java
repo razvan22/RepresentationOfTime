@@ -12,10 +12,14 @@ import java.util.SplittableRandom;
 public class Main {
 
     public static void main(String[] args) {
-//    RepresentationOfTime.daysSinceBorn();
-//    RepresentationOfTime.newYorkToSwedenTime();
-//    RepresentationOfTime.numberOFFridaysSince1190();
-//    RepresentationOfTime.daysSpentOnWc();
+
+    RepresentationOfTime.daysSinceBorn();
+    RepresentationOfTime.newYorkToSwedenTime();
+    RepresentationOfTime.numberOFFridaysSince1190();
+    RepresentationOfTime.daysSpentOnWc();
+    RepresentationOfTime.totalHoursBetweenAgeOf18_80();
+
+
 
 
 
